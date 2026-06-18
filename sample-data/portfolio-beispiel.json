@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "description": "Beispiel-Portfolio für den portfolio-analyst Skill. Fiktives Szenario: Du bist Kreditanalyst/Vertriebsleiter und möchtest 10 Bestandskunden/Geschäftspartner auf Risiko und finanzielle Gesundheit hin überblicken. Alle Firmen sind in sample-data/companies.json mit Details hinterlegt.",
+    "scenario": "Beispiel-Portfolio eines B2B-Zulieferers / Kreditgebers mit Kunden aus unterschiedlichen Branchen und Größenklassen — bewusst gemischt (profitabel/defizitär), um Risiko-Clustering zu demonstrieren."
+  },
+  "portfolio": [
+    { "id": "DEMWUYW5R962", "name": "TRUMPF SE + Co. KG" },
+    { "id": "DE2FDKAK2567", "name": "Festo SE & Co. KG" },
+    { "id": "DEPZ2VFJZF25", "name": "Miele & Cie. KG" },
+    { "id": "DELTU2WDWS05", "name": "dm-drogerie markt GmbH & Co. KG" },
+    { "id": "DEFZ4MICZY78", "name": "Deutsche Lufthansa AG" },
+    { "id": "DENN6V27F320", "name": "Bayer AG" },
+    { "id": "DEZI83ECZP59", "name": "Zalando SE" },
+    { "id": "DE7CG4NJU223", "name": "Heidelberger Druckmaschinen AG" },
+    { "id": "DEYQWR13CZ20", "name": "Deutsche Bahn AG" },
+    { "id": "DEY1YQT3UN84", "name": "Knorr-Bremse AG" }
+  ]
+}
