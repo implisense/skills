@@ -13,28 +13,43 @@ Konzept-Quelle (Entscheidungsgrundlage, nicht duplizieren): `~/claude/the-compan
 
 ## Zielgruppe & Grundprinzip
 
-Primär **KI-affin, aber kein Terminal** (claude.ai-Nutzer, nicht zwingend Claude Code). Daher **Dual-Format**: jeder Skill existiert zweimal — einmal als copy-paste-barer Project-Instructions-Text (Format A), einmal als Claude-Code-Skill mit echtem MCP-Zugriff (Format B).
+Primär **KI-affin, aber kein Terminal** (claude.ai-/ChatGPT-Nutzer, nicht zwingend Claude Code). Repo deckt zwei Assistenten ab (Plattform-Achse) mit je zwei Nutzungsmodi:
+
+- **Claude** (`claude/`): claude.ai Project Instructions (copy-paste) + Claude Code Skill mit MCP-Zugriff.
+- **ChatGPT** (`chatgpt/`): Custom-GPT-Instructions, nutzbar als Free-Chat (Text einfügen + Datei anhängen) oder als Custom GPT (Plus, Instructions + Knowledge).
+
+Zielnutzer ChatGPT-Seite: **Normalos/Endkunden**, kein Dev-Fokus. Daher kein OpenAPI-Actions-Pfad als Default (nur als CTA-Ausblick erwähnt, später nachrüstbar als `chatgpt/actions/`).
+
+Bewusst kein geteilter `recipes/`-Quelllayer: bei 3 Skills × 2 Plattformen ist Prompt-Text pro Plattform leicht verschieden; Duplikat-Pflege < Abstraktions-Komplexität.
 
 ## Verzeichnisstruktur
 
 ```
 .
 ├── CLAUDE.md                 ← diese Datei
-├── README.md                 ← Einstieg: "claude.ai oder Claude Code?"
-├── SETUP_MCP.md              ← MCP-Setup für Claude-Code-Pfad
-├── install.sh                ← One-liner: skills/ nach ~/.claude/skills/ kopieren
+├── README.md                 ← Einstieg: "Claude oder ChatGPT?"
 │
-├── projects/                 ← Format A: claude.ai Project Instructions
-│   ├── company-researcher.md
-│   ├── portfolio-analyst.md
-│   └── lead-qualifier.md
+├── claude/
+│   ├── README.md             ← claude.ai vs Claude Code
+│   ├── SETUP_MCP.md          ← MCP-Setup für Claude-Code-Pfad
+│   ├── install.sh            ← One-liner: claude/skills/ nach ~/.claude/skills/ kopieren
+│   ├── projects/             ← claude.ai Project Instructions (copy-paste)
+│   │   ├── company-researcher.md
+│   │   ├── portfolio-analyst.md
+│   │   └── lead-qualifier.md
+│   └── skills/               ← Claude Code Skills (mit MCP-Daten-Check)
+│       ├── company-researcher.md
+│       ├── portfolio-analyst.md
+│       └── lead-qualifier.md
 │
-├── skills/                   ← Format B: Claude Code Skills (mit MCP-Daten-Check)
-│   ├── company-researcher.md
-│   ├── portfolio-analyst.md
-│   └── lead-qualifier.md
+├── chatgpt/
+│   ├── README.md             ← 2 Wege: Free-Chat vs Custom GPT (Plus)
+│   └── custom-gpt/           ← Instructions-Text je Skill
+│       ├── company-researcher.md
+│       ├── portfolio-analyst.md
+│       └── lead-qualifier.md
 │
-└── sample-data/
+└── sample-data/              ← shared, beide Plattformen laden hoch
     ├── companies.json        ← ~30 kuratierte deutsche Firmen (echte, öffentliche Daten)
     └── portfolio-beispiel.json
 ```
@@ -43,8 +58,9 @@ Primär **KI-affin, aber kein Terminal** (claude.ai-Nutzer, nicht zwingend Claud
 
 - **Sprache:** Skills und README zweisprachig denken (DE primär, da Zielmarkt Deutschland — aber Code-/Dateinamen, Variablen, technische Begriffe Englisch). Einzelne Skill-Dateien können DE-only sein, wenn der Zielnutzer (deutsche Analysten/Consultants) das nahelegt — im Zweifel DE.
 - **Sample-Daten:** Nur öffentlich bekannte, real existierende Unternehmen mit unkritischen Eckdaten (Name, Branche, Größe, Standort, grobe Finanzkennzahlen aus Handelsregister-Pflichtveröffentlichungen). Keine sensiblen/nicht-öffentlichen Informationen.
-- **Format-A-Skills (`projects/`)** dürfen NICHT auf MCP-Tools verweisen — sie funktionieren ausschließlich mit der hochgeladenen `sample-data/`-Datei. Jeder Format-A-Skill endet mit einem klaren Conversion-CTA Richtung API/MCP.
-- **Format-B-Skills (`skills/`)** prüfen zuerst, ob ein Implisense-MCP-Server verbunden ist (`company_profile`, `search_companies`, etc. verfügbar?) und nutzen dann echte Daten; ohne MCP fallen sie auf `sample-data/` zurück.
+- **Copy-paste-Skills (`claude/projects/`, `chatgpt/custom-gpt/`)** dürfen NICHT auf MCP-Tools verweisen — sie funktionieren ausschließlich mit der hochgeladenen `sample-data/`-Datei. Jeder endet mit demselben Conversion-CTA Richtung API/MCP (plattformneutral formuliert).
+- **Claude-Code-Skills (`claude/skills/`)** prüfen zuerst, ob ein Implisense-MCP-Server verbunden ist (`company_profile`, `search_companies`, etc. verfügbar?) und nutzen dann echte Daten; ohne MCP fallen sie auf `sample-data/` zurück.
+- **Skill-Inhalte über Plattformen synchron halten:** Workflow/Scope/Einschränkungen je Skill sind in `claude/projects/` und `chatgpt/custom-gpt/` inhaltlich identisch — nur Daten-Upload-Wording (Project vs. Knowledge/Chat) und CTA-Schlusszeile unterscheiden sich. Änderung an einem Skill → in beiden Dateien nachziehen.
 - **MVP-Skills (Reihenfolge):** `company-researcher` → `portfolio-analyst` → `lead-qualifier`. Siehe Plan-Dokument für Scope jedes Skills.
 - **Scope-Grenzen:** Kein vollständiger Scoring-Algorithmus, kein Monitoring-Automatismus (Signal Retainer), keine internen Segmentierungs-Heuristiken. Skills zeigen *was möglich ist*, nicht *wie Implisense es intern baut*.
 
@@ -54,13 +70,10 @@ Implisense MCP-Server: `https://mcp.implisense.com/` (FastMCP, Bearer-Token-Auth
 
 ## Status
 
-Aufbau läuft (Stand 2026-06-11), Reihenfolge gemäß Plan-Dokument Abschnitt "Umsetzungsschritte":
-1. ✅ `sample-data/companies.json` — 29 kuratierte Firmen
-2. ✅ `projects/company-researcher.md`
-3. ✅ `skills/company-researcher.md`
-4. ✅ `README.md`
-5. ✅ `portfolio-analyst` (Format A+B) + `sample-data/portfolio-beispiel.json`
-6. ✅ `lead-qualifier` (Format A+B)
-7. ✅ `SETUP_MCP.md`
-8. ✅ `install.sh`
-9. GitHub-Repo veröffentlichen (separater Schritt, nicht Teil dieses Arbeitsverzeichnisses) — letzter offener Schritt
+Claude-Seite komplett (alle 3 Skills Format A+B, README, SETUP_MCP, install.sh).
+
+ChatGPT-Seite ergänzt (Stand 2026-06-24): Repo auf Plattform-Achse umgestellt — bestehende Dateien nach `claude/` verschoben, `chatgpt/` mit Custom-GPT-Instructions je Skill + ChatGPT-README (Free-Chat- und Custom-GPT-Weg) neu. Root-README leitet auf "Claude oder ChatGPT?".
+
+Offen:
+- GitHub-Repo veröffentlichen (separater Schritt, nicht Teil dieses Arbeitsverzeichnisses).
+- Optional/später: `chatgpt/actions/` (OpenAPI) für Dev-Zielgruppe, falls Nachfrage.

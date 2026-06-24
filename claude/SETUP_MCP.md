@@ -2,7 +2,7 @@
 
 Diese Anleitung verbindet Claude Code mit dem **Implisense MCP-Server** — danach arbeiten die Skills in `skills/` mit Live-Daten zu **2,5 Millionen deutschen Unternehmen** statt mit den Beispieldaten in `sample-data/`.
 
-> Du nutzt claude.ai im Browser, nicht Claude Code? Dann brauchst du diese Anleitung nicht — nutze stattdessen die Skills in `projects/` mit den Beispieldaten (siehe [README.md](README.md), Pfad A).
+> Du nutzt claude.ai im Browser, nicht Claude Code? Dann brauchst du diese Anleitung nicht — nutze stattdessen die Skills in `projects/` mit den Beispieldaten (siehe [README.md](README.md), claude.ai-Pfad).
 
 ## Voraussetzungen
 
@@ -39,7 +39,7 @@ Wenn Claude eine Antwort mit Stammdaten liefert, ist die Verbindung aktiv.
 ## 3. Skills installieren (falls noch nicht geschehen)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/implisense/claude-skills/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/implisense/claude-skills/main/claude/install.sh | bash
 ```
 
 Siehe [`install.sh`](install.sh) für Details.

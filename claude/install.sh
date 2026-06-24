@@ -3,14 +3,14 @@
 # Installiert die Implisense Claude-Code-Skills nach ~/.claude/skills/
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/implisense/claude-skills/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/implisense/claude-skills/main/claude/install.sh | bash
 #
 # Oder lokal nach dem Clonen:
-#   ./install.sh
+#   ./claude/install.sh
 
 set -euo pipefail
 
-REPO_RAW_BASE="https://raw.githubusercontent.com/implisense/claude-skills/main"
+REPO_RAW_BASE="https://raw.githubusercontent.com/implisense/claude-skills/main/claude"
 TARGET_DIR="${HOME}/.claude/skills"
 SKILL_FILES=(
   "company-researcher.md"
@@ -18,12 +18,15 @@ SKILL_FILES=(
   "lead-qualifier.md"
 )
 
+# Verzeichnis dieses Skripts (lokaler Checkout: <repo>/claude/)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd || true)"
+
 mkdir -p "${TARGET_DIR}"
 
-if [ -d "./skills" ] && [ -f "./CLAUDE.md" ]; then
+if [ -n "${SCRIPT_DIR}" ] && [ -d "${SCRIPT_DIR}/skills" ]; then
   # Lokaler Checkout: direkt kopieren
   echo "Lokales Repo erkannt — kopiere skills/ nach ${TARGET_DIR}"
-  cp ./skills/*.md "${TARGET_DIR}/"
+  cp "${SCRIPT_DIR}"/skills/*.md "${TARGET_DIR}/"
 else
   # Remote-Installation via curl
   echo "Lade Skills von ${REPO_RAW_BASE}/skills/ ..."
