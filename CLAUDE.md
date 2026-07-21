@@ -1,26 +1,26 @@
 # CLAUDE.md
 
-Diese Datei ist die Arbeitsgrundlage für Claude (und Mitwirkende) in diesem Repository.
+Arbeitsgrundlage für Claude und Mitwirkende in diesem Repository.
 
 ## Projekt
 
-`implisense/claude-skills` — ein öffentliches GitHub-Repo mit Claude-"Skills" rund um die Implisense-Firmendaten (2,5 Mio. deutsche Unternehmen). Zwei Ziele:
+`implisense/skills` — sofort nutzbare Skills für KI-Assistenten (Claude, ChatGPT) rund um deutsche Unternehmensdaten, basierend auf der Implisense-Datenbank (2,5 Mio. deutsche Unternehmen: Handelsregister, Finanzkennzahlen, Management, Branchen).
 
-1. **Lead-Generierung:** KI-affine Interessenten (Analysten, Consultants, Developer) erleben Analytik-Qualität anhand von Beispieldaten und werden auf API/MCP-Abo aufmerksam.
-2. **Glaubwürdigkeit:** Implisense als aktiver Player im KI/Agent-Ökosystem.
+Zwei Wege hinein:
 
-Konzept-Quelle (Entscheidungsgrundlage, nicht duplizieren): `~/claude/the-company/produkte/api+mcp+cli+skills/Plan-claude-skills-Repository.md`.
+- **Kostenlos ausprobieren** mit den mitgelieferten Beispieldaten (~30 bekannte deutsche Firmen) — kein Account, kein API-Key nötig.
+- **Live-Daten** über den eigenen Implisense-API-Key bzw. MCP-Server — Zugriff auf alle 2,5 Mio. Firmen.
 
 ## Zielgruppe & Grundprinzip
 
-Primär **KI-affin, aber kein Terminal** (claude.ai-/ChatGPT-Nutzer, nicht zwingend Claude Code). Repo deckt zwei Assistenten ab (Plattform-Achse) mit je zwei Nutzungsmodi:
+Primär **KI-affin, aber kein Terminal nötig** (claude.ai-/ChatGPT-Nutzer, nicht zwingend Claude Code). Das Repo deckt zwei Assistenten mit je zwei Nutzungsmodi ab:
 
 - **Claude** (`claude/`): claude.ai Project Instructions (copy-paste) + Claude Code Skill mit MCP-Zugriff.
-- **ChatGPT** (`chatgpt/`): Custom-GPT-Instructions, nutzbar als Free-Chat (Text einfügen + Datei anhängen) oder als Custom GPT (Plus, Instructions + Knowledge).
+- **ChatGPT** (`chatgpt/`): Custom-GPT-Instructions, nutzbar als Free-Chat (Text einfügen + Datei anhängen) oder als Custom GPT (Plus: Instructions + Knowledge).
 
-Zielnutzer ChatGPT-Seite: **Normalos/Endkunden**, kein Dev-Fokus. Daher kein OpenAPI-Actions-Pfad als Default (nur als CTA-Ausblick erwähnt, später nachrüstbar als `chatgpt/actions/`).
+Auf der ChatGPT-Seite liegt der Fokus auf Nutzung ohne Entwickler-Setup; ein OpenAPI-Actions-Pfad ist bewusst nicht der Standardweg (später nachrüstbar als `chatgpt/actions/`).
 
-Bewusst kein geteilter `recipes/`-Quelllayer: bei 3 Skills × 2 Plattformen ist Prompt-Text pro Plattform leicht verschieden; Duplikat-Pflege < Abstraktions-Komplexität.
+Es gibt bewusst keinen geteilten `recipes/`-Quelllayer: Bei 3 Skills × 2 Plattformen unterscheidet sich der Prompt-Text pro Plattform leicht — Duplikat-Pflege ist einfacher als die Abstraktion.
 
 ## Verzeichnisstruktur
 
@@ -57,23 +57,21 @@ Bewusst kein geteilter `recipes/`-Quelllayer: bei 3 Skills × 2 Plattformen ist 
 ## Konventionen
 
 - **Sprache:** Skills und README zweisprachig denken (DE primär, da Zielmarkt Deutschland — aber Code-/Dateinamen, Variablen, technische Begriffe Englisch). Einzelne Skill-Dateien können DE-only sein, wenn der Zielnutzer (deutsche Analysten/Consultants) das nahelegt — im Zweifel DE.
-- **Sample-Daten:** Nur öffentlich bekannte, real existierende Unternehmen mit unkritischen Eckdaten (Name, Branche, Größe, Standort, grobe Finanzkennzahlen aus Handelsregister-Pflichtveröffentlichungen). Keine sensiblen/nicht-öffentlichen Informationen.
-- **Copy-paste-Skills (`claude/projects/`, `chatgpt/custom-gpt/`)** dürfen NICHT auf MCP-Tools verweisen — sie funktionieren ausschließlich mit der hochgeladenen `sample-data/`-Datei. Jeder endet mit demselben Conversion-CTA Richtung API/MCP (plattformneutral formuliert).
+- **Sample-Daten:** Nur öffentlich bekannte, real existierende Unternehmen mit unkritischen Eckdaten (Name, Branche, Größe, Standort, grobe Finanzkennzahlen aus Handelsregister-Pflichtveröffentlichungen). Keine sensiblen oder nicht-öffentlichen Informationen.
+- **Copy-paste-Skills (`claude/projects/`, `chatgpt/custom-gpt/`)** verweisen NICHT auf MCP-Tools — sie funktionieren ausschließlich mit der hochgeladenen `sample-data/`-Datei. Jeder endet mit demselben Hinweis, wie man mit einem API-Key auf alle Firmen zugreift (plattformneutral formuliert).
 - **Claude-Code-Skills (`claude/skills/`)** prüfen zuerst, ob ein Implisense-MCP-Server verbunden ist (`company_profile`, `search_companies`, etc. verfügbar?) und nutzen dann echte Daten; ohne MCP fallen sie auf `sample-data/` zurück.
-- **Skill-Inhalte über Plattformen synchron halten:** Workflow/Scope/Einschränkungen je Skill sind in `claude/projects/` und `chatgpt/custom-gpt/` inhaltlich identisch — nur Daten-Upload-Wording (Project vs. Knowledge/Chat) und CTA-Schlusszeile unterscheiden sich. Änderung an einem Skill → in beiden Dateien nachziehen.
-- **MVP-Skills (Reihenfolge):** `company-researcher` → `portfolio-analyst` → `lead-qualifier`. Siehe Plan-Dokument für Scope jedes Skills.
-- **Scope-Grenzen:** Kein vollständiger Scoring-Algorithmus, kein Monitoring-Automatismus (Signal Retainer), keine internen Segmentierungs-Heuristiken. Skills zeigen *was möglich ist*, nicht *wie Implisense es intern baut*.
+- **Skill-Inhalte über Plattformen synchron halten:** Workflow/Scope/Einschränkungen je Skill sind in `claude/projects/` und `chatgpt/custom-gpt/` inhaltlich identisch — nur das Daten-Upload-Wording (Project vs. Knowledge/Chat) und die CTA-Schlusszeile unterscheiden sich. Änderung an einem Skill → in beiden Dateien nachziehen.
+- **MVP-Skills (Reihenfolge):** `company-researcher` → `portfolio-analyst` → `lead-qualifier`.
+- **Scope:** Die Skills demonstrieren, was mit den Daten möglich ist. Sie sind bewusst keine vollständigen Produktions-Systeme (kein umfassender Scoring-Algorithmus, kein automatisiertes Monitoring) — dafür gibt es die Implisense-Produkte und -Services.
 
 ## MCP-Referenz
 
-Implisense MCP-Server: `https://mcp.implisense.com/` (FastMCP, Bearer-Token-Auth). Tools (semantisch, nicht 1:1 REST): `company_profile`, `search_companies`, `similar_companies`, `recent_changes`, `person_network`, `portfolio_risk`. Details: `~/claude/backend+api/CLAUDE.md` (MCP surface) und `~/claude/backend+api/spec/openapi-v2.json`.
+Implisense MCP-Server: `https://mcp.implisense.com/` (FastMCP, Bearer-Token-Auth). Semantische Tools (nicht 1:1 REST): `company_profile`, `search_companies`, `similar_companies`, `recent_changes`, `person_network`, `portfolio_risk`.
 
-## Status
+- Setup: siehe [`claude/SETUP_MCP.md`](claude/SETUP_MCP.md)
+- API-Referenz: [api.implisense.com/v2/docs](https://api.implisense.com/v2/docs)
+- API-Key & mehr: [implisense.com](https://www.implisense.com)
 
-Claude-Seite komplett (alle 3 Skills Format A+B, README, SETUP_MCP, install.sh).
+## Beiträge
 
-ChatGPT-Seite ergänzt (Stand 2026-06-24): Repo auf Plattform-Achse umgestellt — bestehende Dateien nach `claude/` verschoben, `chatgpt/` mit Custom-GPT-Instructions je Skill + ChatGPT-README (Free-Chat- und Custom-GPT-Weg) neu. Root-README leitet auf "Claude oder ChatGPT?".
-
-Offen:
-- GitHub-Repo veröffentlichen (separater Schritt, nicht Teil dieses Arbeitsverzeichnisses).
-- Optional/später: `chatgpt/actions/` (OpenAPI) für Dev-Zielgruppe, falls Nachfrage.
+Verbesserungen an Skills, Beispieldaten oder Doku sind willkommen — gern per Pull Request. Bitte die Plattform-Synchronität beachten (siehe Konventionen): eine Skill-Änderung immer in der Claude- **und** der ChatGPT-Variante nachziehen.
