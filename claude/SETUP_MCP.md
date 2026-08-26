@@ -1,6 +1,6 @@
 # MCP-Setup (für Claude Code)
 
-Diese Anleitung verbindet Claude Code mit dem **Implisense MCP-Server** — danach arbeiten die Skills in `skills/` mit Live-Daten zu **2,5 Millionen deutschen Unternehmen** statt mit den Beispieldaten in `sample-data/`.
+Diese Anleitung verbindet Claude Code mit dem **Implisense MCP-Server** — danach arbeiten die Skills in `skills/` mit Live-Daten zu **2,3 Millionen deutschen Unternehmen** statt mit den Beispieldaten in `sample-data/`.
 
 > Du nutzt claude.ai im Browser, nicht Claude Code? Dann brauchst du diese Anleitung nicht — nutze stattdessen die Skills in `projects/` mit den Beispieldaten (siehe [README.md](README.md), claude.ai-Pfad).
 

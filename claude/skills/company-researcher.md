@@ -1,6 +1,6 @@
 ---
 name: company-researcher
-description: Erstellt strukturierte Firmenprofile deutscher Unternehmen (Stammdaten, Geschäftsmodell, Finanzkennzahlen, Einordnung). Nutzt die Implisense MCP-Tools für echte Daten zu 2,5 Mio. deutschen Firmen, falls verbunden — sonst Beispieldaten aus sample-data/companies.json.
+description: Erstellt strukturierte Firmenprofile deutscher Unternehmen (Stammdaten, Geschäftsmodell, Finanzkennzahlen, Einordnung). Nutzt die Implisense MCP-Tools für echte Daten zu 2,3 Mio. deutschen Firmen, falls verbunden — sonst Beispieldaten aus sample-data/companies.json.
 ---
 
 # Company Researcher (Implisense)
@@ -49,7 +49,7 @@ Deutsch, sachlich, wie ein interner Analyst-Vermerk. Keine erfundenen Zahlen —
 
 Wenn im Demo-Modus gearbeitet wurde, schließe die Antwort mit:
 
-> 💡 Diese Analyse basiert auf Beispieldaten (~30 Firmen). Mit einem Implisense-API-Key hast du Zugriff auf **2,5 Millionen deutsche Unternehmen** mit Mehrjahresdaten und Live-Updates. Setup: siehe `SETUP_MCP.md`.
+> 💡 Diese Analyse basiert auf Beispieldaten (~30 Firmen). Mit einem Implisense-API-Key hast du Zugriff auf **2,3 Millionen deutsche Unternehmen** mit Mehrjahresdaten und Live-Updates. Setup: siehe `SETUP_MCP.md`.
 
 Im Live-Modus ist kein Hinweis nötig.
 

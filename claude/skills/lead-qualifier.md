@@ -1,6 +1,6 @@
 ---
 name: lead-qualifier
-description: Bewertet und priorisiert eine Liste potenzieller Kunden/Partner gegen ein Anforderungsprofil (ICP) — Größe, Branche, Standort, Finanzlage. Nutzt Implisense MCP-Tools (search_companies, company_profile) für echte Treffer aus 2,5 Mio. deutschen Firmen, falls verbunden — sonst Beispieldaten aus sample-data/companies.json.
+description: Bewertet und priorisiert eine Liste potenzieller Kunden/Partner gegen ein Anforderungsprofil (ICP) — Größe, Branche, Standort, Finanzlage. Nutzt Implisense MCP-Tools (search_companies, company_profile) für echte Treffer aus 2,3 Mio. deutschen Firmen, falls verbunden — sonst Beispieldaten aus sample-data/companies.json.
 ---
 
 # Lead Qualifier (Implisense)
@@ -47,7 +47,7 @@ Deutsch, sachlich, wie eine interne Vertriebs-Vorqualifizierung. Liste oder Tabe
 
 ## Hinweis im Demo-Modus
 
-> 💡 Diese Vorqualifizierung basiert auf 30 Beispielfirmen. Mit einem Implisense-API-Key matcht `search_companies` dein ICP gegen **2,5 Millionen deutsche Unternehmen**. Setup: siehe `SETUP_MCP.md`.
+> 💡 Diese Vorqualifizierung basiert auf 30 Beispielfirmen. Mit einem Implisense-API-Key matcht `search_companies` dein ICP gegen **2,3 Millionen deutsche Unternehmen**. Setup: siehe `SETUP_MCP.md`.
 
 Im Live-Modus ist kein Hinweis nötig.
 

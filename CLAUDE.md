@@ -4,12 +4,12 @@ Arbeitsgrundlage für Claude und Mitwirkende in diesem Repository.
 
 ## Projekt
 
-`implisense/skills` — sofort nutzbare Skills für KI-Assistenten (Claude, ChatGPT) rund um deutsche Unternehmensdaten, basierend auf der Implisense-Datenbank (2,5 Mio. deutsche Unternehmen: Handelsregister, Finanzkennzahlen, Management, Branchen).
+`implisense/skills` — sofort nutzbare Skills für KI-Assistenten (Claude, ChatGPT) rund um deutsche Unternehmensdaten, basierend auf der Implisense-Datenbank (2,3 Mio. deutsche Unternehmen: Handelsregister, Finanzkennzahlen, Management, Branchen).
 
 Zwei Wege hinein:
 
 - **Kostenlos ausprobieren** mit den mitgelieferten Beispieldaten (~30 bekannte deutsche Firmen) — kein Account, kein API-Key nötig.
-- **Live-Daten** über den eigenen Implisense-API-Key bzw. MCP-Server — Zugriff auf alle 2,5 Mio. Firmen.
+- **Live-Daten** über den eigenen Implisense-API-Key bzw. MCP-Server — Zugriff auf alle 2,3 Mio. Firmen.
 
 ## Zielgruppe & Grundprinzip
 
@@ -49,6 +49,9 @@ Es gibt bewusst keinen geteilten `recipes/`-Quelllayer: Bei 3 Skills × 2 Plattf
 │       ├── portfolio-analyst.md
 │       └── lead-qualifier.md
 │
+├── scripts/
+│   └── check-company-count.mjs  ← pinnt die Firmenzahl (2,3 Mio.) im ganzen Repo
+│
 └── sample-data/              ← shared, beide Plattformen laden hoch
     ├── companies.json        ← ~30 kuratierte deutsche Firmen (echte, öffentliche Daten)
     └── portfolio-beispiel.json
@@ -61,6 +64,7 @@ Es gibt bewusst keinen geteilten `recipes/`-Quelllayer: Bei 3 Skills × 2 Plattf
 - **Copy-paste-Skills (`claude/projects/`, `chatgpt/custom-gpt/`)** verweisen NICHT auf MCP-Tools — sie funktionieren ausschließlich mit der hochgeladenen `sample-data/`-Datei. Jeder endet mit demselben Hinweis, wie man mit einem API-Key auf alle Firmen zugreift (plattformneutral formuliert).
 - **Claude-Code-Skills (`claude/skills/`)** prüfen zuerst, ob ein Implisense-MCP-Server verbunden ist (`company_profile`, `search_companies`, etc. verfügbar?) und nutzen dann echte Daten; ohne MCP fallen sie auf `sample-data/` zurück.
 - **Skill-Inhalte über Plattformen synchron halten:** Workflow/Scope/Einschränkungen je Skill sind in `claude/projects/` und `chatgpt/custom-gpt/` inhaltlich identisch — nur das Daten-Upload-Wording (Project vs. Knowledge/Chat) und die CTA-Schlusszeile unterscheiden sich. Änderung an einem Skill → in beiden Dateien nachziehen.
+- **Firmenzahl:** Genau eine Zahl, überall — **2,3 Mio. / 2.3M** deutsche Unternehmen (Registertypen HRA, HRB, GnR, PR, aktiv; Vereine zählen nicht). Definiert im Wiki unter `knowledge-base/produkte/firmendatenbank.md`. `node scripts/check-company-count.mjs` erzwingt sie: keine retirierte Zahl (2,5 / 2,9) darf im Repo überleben, und die vier Einstiegsseiten müssen sie nennen. Dieselbe Prüfung liegt in `website` und `implisense-app` — ändert sich die Zahl, wandern `COUNT` und `RETIRED` in allen drei Skripten im selben Commit mit.
 - **MVP-Skills (Reihenfolge):** `company-researcher` → `portfolio-analyst` → `lead-qualifier`.
 - **Scope:** Die Skills demonstrieren, was mit den Daten möglich ist. Sie sind bewusst keine vollständigen Produktions-Systeme (kein umfassender Scoring-Algorithmus, kein automatisiertes Monitoring) — dafür gibt es die Implisense-Produkte und -Services.
 

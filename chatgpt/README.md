@@ -1,6 +1,6 @@
 # Implisense-Skills für ChatGPT
 
-Dieselben Analyse-Skills wie auf der Claude-Seite, aufbereitet für ChatGPT — rund um die Implisense-Datenbank mit **2,5 Millionen deutschen Unternehmen** (Handelsregister, Finanzkennzahlen, Management, Branchen).
+Dieselben Analyse-Skills wie auf der Claude-Seite, aufbereitet für ChatGPT — rund um die Implisense-Datenbank mit **2,3 Millionen deutschen Unternehmen** (Handelsregister, Finanzkennzahlen, Management, Branchen).
 
 Probier es mit Beispieldaten von ~30 bekannten deutschen Firmen aus. Es gibt zwei Wege — wähle nach deinem ChatGPT-Plan:
 
@@ -32,7 +32,7 @@ Einmal einrichten, dann dauerhaft als eigenes GPT nutzbar und teilbar:
 
 ---
 
-Du arbeitest mit Beispieldaten zu ~30 bekannten deutschen Unternehmen (SAP, BMW, Bosch, Miele, TRUMPF, dm, Trade Republic, …). Jede Analyse endet mit einem Hinweis, wie du mit einem API-Key Zugriff auf alle 2,5 Mio. Firmen bekommst.
+Du arbeitest mit Beispieldaten zu ~30 bekannten deutschen Unternehmen (SAP, BMW, Bosch, Miele, TRUMPF, dm, Trade Republic, …). Jede Analyse endet mit einem Hinweis, wie du mit einem API-Key Zugriff auf alle 2,3 Mio. Firmen bekommst.
 
 **Verfügbare Skills (`custom-gpt/`):**
 
@@ -46,6 +46,6 @@ Du arbeitest mit Beispieldaten zu ~30 bekannten deutschen Unternehmen (SAP, BMW,
 
 ## Live-Daten statt Beispieldaten
 
-Die Skills hier nutzen die hochgeladenen Beispieldaten (~30 Firmen). Für Zugriff auf alle **2,5 Millionen deutschen Unternehmen** mit Mehrjahres-Finanzdaten, Management-Informationen und Echtzeit-Updates bietet Implisense eine **API/MCP-Schnittstelle**. ChatGPT kann diese über **Custom GPT Actions** (OpenAPI) oder einen **MCP-Connector** direkt anbinden — Details auf Anfrage.
+Die Skills hier nutzen die hochgeladenen Beispieldaten (~30 Firmen). Für Zugriff auf alle **2,3 Millionen deutschen Unternehmen** mit Mehrjahres-Finanzdaten, Management-Informationen und Echtzeit-Updates bietet Implisense eine **API/MCP-Schnittstelle**. ChatGPT kann diese über **Custom GPT Actions** (OpenAPI) oder einen **MCP-Connector** direkt anbinden — Details auf Anfrage.
 
 → [implisense.com/api](https://www.implisense.com)

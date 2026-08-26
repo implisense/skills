@@ -1,6 +1,6 @@
 # Implisense AI-Skills
 
-Analyse-Skills für KI-Assistenten rund um deutsche Unternehmensdaten — basierend auf der Implisense-Datenbank mit **2,5 Millionen deutschen Unternehmen** (Handelsregister, Finanzkennzahlen, Management, Branchen).
+Analyse-Skills für KI-Assistenten rund um deutsche Unternehmensdaten — basierend auf der Implisense-Datenbank mit **2,3 Millionen deutschen Unternehmen** (Handelsregister, Finanzkennzahlen, Management, Branchen).
 
 Probier es in 2 Minuten aus, mit Beispieldaten von ~30 bekannten deutschen Firmen (SAP, BMW, Bosch, Miele, TRUMPF, dm, Trade Republic, …) — oder verbinde deinen eigenen Implisense-API-Key für beliebige Firmen.
 
@@ -36,7 +36,7 @@ Jeder Skill existiert für beide Assistenten — siehe das jeweilige Unterverzei
 
 ## Was ist Implisense?
 
-Implisense ist ein Daten- und Analytik-Unternehmen, gegründet von Wissenschaftlern, das deutsche Unternehmen analysierbar macht: Analysen und Daten zu 2,5 Millionen deutschen Unternehmen — als Report, Produkt oder API/MCP.
+Implisense ist ein Daten- und Analytik-Unternehmen, gegründet von Wissenschaftlern, das deutsche Unternehmen analysierbar macht: Analysen und Daten zu 2,3 Millionen deutschen Unternehmen — als Report, Produkt oder API/MCP.
 
 → [implisense.com](https://www.implisense.com)
 
