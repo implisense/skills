@@ -49,6 +49,12 @@ Es gibt bewusst keinen geteilten `recipes/`-Quelllayer: Bei 3 Skills × 2 Plattf
 │       ├── portfolio-analyst.md
 │       └── lead-qualifier.md
 │
+├── plugin/                   ← ChatGPT-Plugin (Verzeichnis-Einreichung): Manifest, MCP-Verweis, Skills
+│   ├── .codex-plugin/plugin.json
+│   ├── .mcp.json             ← https://mcp.implisense.com/
+│   ├── assets/               ← logo.png (256×256), composer-icon.svg
+│   └── skills/<name>/SKILL.md ← Live-only-Fassungen der drei Skills (EN, antworten in Nutzersprache)
+│
 ├── scripts/
 │   └── check-company-count.mjs  ← pinnt die Firmenzahl (2,3 Mio.) im ganzen Repo
 │
@@ -79,3 +85,7 @@ Implisense MCP-Server: `https://mcp.implisense.com/` (FastMCP, Bearer-Token-Auth
 ## Beiträge
 
 Verbesserungen an Skills, Beispieldaten oder Doku sind willkommen — gern per Pull Request. Bitte die Plattform-Synchronität beachten (siehe Konventionen): eine Skill-Änderung immer in der Claude- **und** der ChatGPT-Variante nachziehen.
+
+## Plugin (`plugin/`)
+
+Paket für das ChatGPT-Plugin-Verzeichnis (eingereicht über platform.openai.com/plugins als ZIP). Anders als die Copy-paste-Skills setzen die Plugin-Skills den MCP-Server voraus — er ist Teil des Plugins — und kennen deshalb keinen Demo-Modus. Inhaltlich folgen sie den drei Skills oben; eine Änderung am Workflow dort hier mitziehen. Das ZIP wird aus dem Inhalt von `plugin/` gebaut (Manifest im ZIP-Root, nicht in einem Unterordner): `cd plugin && zip -r ../implisense-plugin.zip . -x '.DS_Store'`. Das ZIP ist gitignored.

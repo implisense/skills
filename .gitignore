@@ -1,2 +1,5 @@
 # Private, lokale Arbeitsdateien (nicht im öffentlichen Repo)
 CLAUDE.local.md
+
+# Gebautes Plugin-Paket (aus plugin/)
+implisense-plugin.zip
