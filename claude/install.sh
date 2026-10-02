@@ -1,45 +1,45 @@
 #!/usr/bin/env bash
 #
-# Installiert die Implisense Claude-Code-Skills nach ~/.claude/skills/
+# Installiert die Implisense-Skills für Claude Code nach ~/.claude/skills/<name>/SKILL.md
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/implisense/claude-skills/main/claude/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/implisense/skills/main/claude/install.sh | bash
 #
 # Oder lokal nach dem Clonen:
 #   ./claude/install.sh
+#
+# Die Skills liegen in plugin/skills/ — dieselben, die das ChatGPT-Plugin
+# mitbringt. Sie setzen den Implisense-MCP-Server voraus (siehe SETUP_MCP.md).
 
 set -euo pipefail
 
-REPO_RAW_BASE="https://raw.githubusercontent.com/implisense/claude-skills/main/claude"
+REPO_RAW_BASE="https://raw.githubusercontent.com/implisense/skills/main/plugin/skills"
 TARGET_DIR="${HOME}/.claude/skills"
-SKILL_FILES=(
-  "company-researcher.md"
-  "portfolio-analyst.md"
-  "lead-qualifier.md"
+SKILLS=(
+  "company-researcher"
+  "portfolio-analyst"
+  "lead-qualifier"
+  "contact-finder"
 )
 
 # Verzeichnis dieses Skripts (lokaler Checkout: <repo>/claude/)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd || true)"
+LOCAL_SKILLS="${SCRIPT_DIR:+${SCRIPT_DIR}/../plugin/skills}"
 
-mkdir -p "${TARGET_DIR}"
-
-if [ -n "${SCRIPT_DIR}" ] && [ -d "${SCRIPT_DIR}/skills" ]; then
-  # Lokaler Checkout: direkt kopieren
-  echo "Lokales Repo erkannt — kopiere skills/ nach ${TARGET_DIR}"
-  cp "${SCRIPT_DIR}"/skills/*.md "${TARGET_DIR}/"
-else
-  # Remote-Installation via curl
-  echo "Lade Skills von ${REPO_RAW_BASE}/skills/ ..."
-  for file in "${SKILL_FILES[@]}"; do
-    echo "  -> ${file}"
-    curl -fsSL "${REPO_RAW_BASE}/skills/${file}" -o "${TARGET_DIR}/${file}"
-  done
-fi
+for skill in "${SKILLS[@]}"; do
+  mkdir -p "${TARGET_DIR}/${skill}"
+  if [ -n "${LOCAL_SKILLS}" ] && [ -f "${LOCAL_SKILLS}/${skill}/SKILL.md" ]; then
+    cp "${LOCAL_SKILLS}/${skill}/SKILL.md" "${TARGET_DIR}/${skill}/SKILL.md"
+    echo "  -> ${skill} (lokal)"
+  else
+    curl -fsSL "${REPO_RAW_BASE}/${skill}/SKILL.md" -o "${TARGET_DIR}/${skill}/SKILL.md"
+    echo "  -> ${skill}"
+  fi
+done
 
 echo ""
 echo "Fertig. Skills installiert in ${TARGET_DIR}:"
-ls -1 "${TARGET_DIR}"
+for skill in "${SKILLS[@]}"; do echo "  ${TARGET_DIR}/${skill}/SKILL.md"; done
 echo ""
-echo "Hinweis: Für Live-Daten zu 2,3 Mio. deutschen Unternehmen verbinde den"
-echo "Implisense MCP-Server — siehe SETUP_MCP.md im Repo."
-echo "Ohne MCP-Verbindung greifen die Skills automatisch auf sample-data/ zurück."
+echo "Nächster Schritt: Implisense-MCP-Server verbinden, siehe"
+echo "  https://github.com/implisense/skills/blob/main/claude/SETUP_MCP.md"

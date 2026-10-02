@@ -15,7 +15,7 @@ Turn an ideal customer profile (ICP) into a prioritised list of German companies
    - From example customers: resolve them with `company_profile`, then call `similar_companies` with their IDs as `seed_ids` to find lookalikes.
    - From a list the user brings: resolve each company with `company_profile`.
 3. **Check the best candidates** with `company_profile` (`include=financials`) where the ICP has financial criteria.
-4. **Contacts** only if the user asks: `find_contacts` researches decision makers for given roles at one company. It costs 3 Implicents per company and takes about a minute, so confirm before running it for more than one company.
+4. **Contacts** only if the user asks: follow the `contact-finder` skill for the companies they pick. Each search costs 3 Implicents and takes about a minute, so confirm before running it for more than one company.
 
 ## Output
 

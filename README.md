@@ -11,12 +11,13 @@ Probier es in 2 Minuten aus, mit Beispieldaten von ~30 bekannten deutschen Firme
 ### 🟣 Claude → [`claude/`](claude/)
 
 - **claude.ai im Browser:** Skill-Text in die Project Instructions kopieren, Beispieldaten hochladen, loslegen.
-- **Claude Code im Terminal:** Skills per One-Liner installieren, optional den Implisense-MCP-Server für Live-Daten verbinden.
+- **Mit Live-Daten (claude.ai, App oder Claude Code):** den Implisense-MCP-Server als Connector verbinden; für Claude Code die Skills per One-Liner installieren.
 
 ### 🟢 ChatGPT → [`chatgpt/`](chatgpt/)
 
 - **ChatGPT Free:** Skill-Text in den Chat einfügen, Beispieldaten anhängen, loslegen.
 - **ChatGPT Plus:** Skill als eigenes Custom GPT mit hinterlegten Daten einrichten.
+- **Mit Live-Daten:** das Implisense-Plugin bzw. den MCP-Server in ChatGPT verbinden.
 
 Beide Wege nutzen dieselben Beispieldaten in [`sample-data/`](sample-data/) und zeigen dieselbe Analytik-Qualität.
 
@@ -29,8 +30,9 @@ Beide Wege nutzen dieselben Beispieldaten in [`sample-data/`](sample-data/) und 
 | `company-researcher` | Strukturiertes Firmenprofil: Stammdaten, Geschäftsmodell, Finanzkennzahlen, Einordnung |
 | `portfolio-analyst` | Mehrere Firmen analysieren und nach Risiko/Gesundheit clustern |
 | `lead-qualifier` | Liste potenzieller Kunden nach Relevanzkriterien bewerten |
+| `contact-finder` | Ansprechpartner für eine Funktion (Vertrieb, Einkauf, IT, …) mit Quellen — nur mit Live-Daten |
 
-Jeder Skill existiert für beide Assistenten — siehe das jeweilige Unterverzeichnis.
+Jeder Skill existiert für beide Assistenten — siehe das jeweilige Unterverzeichnis. Die Live-Fassungen für den MCP-Server liegen in [`plugin/skills/`](plugin/skills/).
 
 ---
 

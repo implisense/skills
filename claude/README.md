@@ -33,24 +33,26 @@ Du arbeitest mit Beispieldaten zu ~30 bekannten deutschen Unternehmen (SAP, BMW,
 
 ---
 
-### 💻 Ich nutze Claude Code im Terminal
+### 🔌 Ich will Live-Daten (claude.ai, Claude-App oder Claude Code)
 
-Voller Zugriff auf alle 2,3 Mio. Firmen über die Implisense-MCP-API (Bearer-Token erforderlich, siehe [`SETUP_MCP.md`](SETUP_MCP.md)).
+Voller Zugriff auf alle 2,3 Mio. Firmen über den Implisense-MCP-Server. Du brauchst ein kostenloses Implisense-Konto (100 Implicents Startguthaben) und einen API-Key — Schritt für Schritt in [`SETUP_MCP.md`](SETUP_MCP.md).
 
-**Installation:**
+- **claude.ai / Claude-App:** Customize → Connectors → Add custom connector, URL `https://mcp.implisense.com/`, dann „Connect“ und API-Key eingeben.
+- **Claude Code:** `claude mcp add --transport http implisense https://mcp.implisense.com/`, dann `/mcp` zum Anmelden. Die Skills installierst du mit:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/implisense/claude-skills/main/claude/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/implisense/skills/main/claude/install.sh | bash
 ```
 
-Das kopiert den Inhalt von `claude/skills/` nach `~/.claude/skills/`. Claude Code nutzt die Skills danach automatisch.
+Das legt die Skills unter `~/.claude/skills/<name>/SKILL.md` an; Claude Code nutzt sie danach automatisch.
 
-**Verfügbare Skills (`skills/`):**
+**Live-Skills ([`../plugin/skills/`](../plugin/skills/)):**
 
 | Skill | Was er tut |
 |---|---|
-| [`company-researcher.md`](skills/company-researcher.md) | Wie oben, aber mit Live-Daten (falls MCP verbunden) und Demo-Fallback |
-| [`portfolio-analyst.md`](skills/portfolio-analyst.md) | Portfolio-Analyse über `portfolio_risk`-Tool |
-| [`lead-qualifier.md`](skills/lead-qualifier.md) | Lead-Bewertung über `search_companies` + `company_profile` |
+| `company-researcher` | Wie oben, mit Live-Daten: Management, Mehrjahres-Finanzen, Registeränderungen |
+| `portfolio-analyst` | Risiko-Check einer Firmenliste über `portfolio_risk` |
+| `lead-qualifier` | Zielfirmen zu einem Kundenprofil über `search_companies` und `similar_companies` |
+| `contact-finder` | Ansprechpartner für eine Funktion (Vertrieb, Einkauf, IT, …) über die Echtzeit-Kontaktsuche, mit Quellen |
 
-Ohne MCP-Verbindung greifen diese Skills automatisch auf [`../sample-data/`](../sample-data/) zurück — du kannst sie also auch ohne API-Key ausprobieren.
+Ohne API-Key? Dann nimm die Copy-paste-Skills oben mit den Beispieldaten.

@@ -46,6 +46,12 @@ Du arbeitest mit Beispieldaten zu ~30 bekannten deutschen Unternehmen (SAP, BMW,
 
 ## Live-Daten statt Beispieldaten
 
-Die Skills hier nutzen die hochgeladenen Beispieldaten (~30 Firmen). Für Zugriff auf alle **2,3 Millionen deutschen Unternehmen** mit Mehrjahres-Finanzdaten, Management-Informationen und Echtzeit-Updates bietet Implisense eine **API/MCP-Schnittstelle**. ChatGPT kann diese über **Custom GPT Actions** (OpenAPI) oder einen **MCP-Connector** direkt anbinden — Details auf Anfrage.
+Die Skills hier nutzen die hochgeladenen Beispieldaten (~30 Firmen). Für Zugriff auf alle **2,3 Millionen deutschen Unternehmen** mit Mehrjahres-Finanzdaten, Management-Informationen, Registeränderungen und Echtzeit-Kontaktsuche verbindest du den **Implisense-MCP-Server** mit ChatGPT:
+
+1. Kostenloses Konto auf [app.implisense.com](https://app.implisense.com) anlegen (100 Implicents Startguthaben) und unter Einstellungen → Entwickler einen API-Key erzeugen.
+2. In ChatGPT (Browser) unter Einstellungen → Apps → Erweitert den **Developer Mode** einschalten und eine App mit der URL `https://mcp.implisense.com/` anlegen.
+3. Verbinden: Auf der Implisense-Seite „API-Zugang verbinden“ den API-Key einfügen.
+
+Die Live-Fassungen der Skills (inkl. `contact-finder`) liegen in [`../plugin/skills/`](../plugin/skills/) und kommen mit dem Implisense-Plugin automatisch mit.
 
 → [implisense.com/api](https://www.implisense.com)

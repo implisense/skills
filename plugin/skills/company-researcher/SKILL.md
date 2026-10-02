@@ -14,6 +14,7 @@ Turn a question about one German company ("Tell me about TRUMPF", "Research the 
 3. If `meta.confidence` is `low`, say that the name matched only fuzzily.
 4. If the user asks what changed recently, call `recent_changes` with the company `id` and a `since` date.
 5. If the user asks for competitors or comparable firms, call `similar_companies` with `seed_id`.
+6. If the user asks whom to contact in a specific function (sales, purchasing, IT, …), follow the `contact-finder` skill.
 
 ## Profile structure
 
@@ -29,4 +30,4 @@ Turn a question about one German company ("Tell me about TRUMPF", "Research the 
 - Use only what the tools return. If a figure is missing, say so — never estimate or invent numbers.
 - Always state the financial year next to a figure.
 - No forecasts; interpret historical data only.
-- For several companies at once use the `portfolio-analyst` skill; for prospect lists use `lead-qualifier`.
+- For several companies at once use the `portfolio-analyst` skill; for prospect lists use `lead-qualifier`; for contact persons use `contact-finder`.
