@@ -1,7 +1,7 @@
 {
   "name": "implisense",
-  "version": "1.0.1",
-  "description": "Structured data on 2.3 million active German companies — commercial register, financials, management, register announcements and risk flags — plus guided workflows for company research, portfolio risk checks and lead qualification.",
+  "version": "1.0.2",
+  "description": "Structured data on 2.3 million active German companies — commercial register, financials, management, register announcements and risk flags — plus guided workflows for company research, portfolio risk checks, lead qualification and contact research.",
   "author": {
     "name": "Implisense GmbH",
     "email": "info@implisense.com",
@@ -25,7 +25,7 @@
   "interface": {
     "displayName": "Implisense",
     "shortDescription": "Data on 2.3M German companies",
-    "longDescription": "Implisense gives ChatGPT structured, up-to-date data on every active German company — about 2.3 million firms from the commercial, cooperative and partnership registers.\n\nAsk in plain language and ChatGPT looks up the facts instead of guessing: company profiles with legal form, register number, address, industry codes, management, multi-year financials and contact data; searches by industry, region, size or legal form; lookalikes of your best customers; register changes since a given date; every company a person is involved in; risk flags such as insolvency or liquidation across a list of companies; and decision makers for given roles, with sources.\n\nThree built-in workflows turn the data into work products: a structured company profile, a portfolio risk overview and a qualified lead list against your ideal customer profile.\n\nAll data comes from Implisense's own database, built from public sources such as the German commercial register and the Bundesanzeiger. To connect, you need an Implisense account and an API key from app.implisense.com.",
+    "longDescription": "Implisense gives ChatGPT structured, up-to-date data on every active German company — about 2.3 million firms from the commercial, cooperative and partnership registers.\n\nAsk in plain language and ChatGPT looks up the facts instead of guessing: company profiles with legal form, register number, address, industry codes, management, multi-year financials and contact data; searches by industry, region, size or legal form; lookalikes of your best customers; register changes since a given date; every company a person is involved in; risk flags such as insolvency or liquidation across a list of companies; and decision makers for given roles, with sources.\n\nFour built-in workflows turn the data into work products: a structured company profile, a portfolio risk overview, a qualified lead list against your ideal customer profile, and contact research for a given function.\n\nAll data comes from Implisense's own database, built from public sources such as the German commercial register and the Bundesanzeiger. To connect, you need an Implisense account and an API key from app.implisense.com.",
     "developerName": "Implisense GmbH",
     "category": "Data & Analytics",
     "capabilities": [
