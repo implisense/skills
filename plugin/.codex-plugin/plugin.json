@@ -1,6 +1,6 @@
 {
   "name": "implisense",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Structured data on 2.3 million active German companies — commercial register, financials, management, register announcements and risk flags — plus guided workflows for company research, portfolio risk checks, lead qualification and contact research.",
   "author": {
     "name": "Implisense GmbH",
@@ -40,7 +40,7 @@
       "Show me companies similar to SIM Automation and URT Utz Ratio Technik.",
       "Who is responsible for sales at SIM Automation GmbH? Include sources."
     ],
-    "brandColor": "#0EA5E9",
+    "brandColor": "#0077B6",
     "composerIcon": "./assets/composer-icon.svg",
     "logo": "./assets/logo.png"
   }
